@@ -1,10 +1,14 @@
+val kiamaVersion = "1.8.0"
+val parserCombinatorsVersion = "1.0.3"
+val scalaCheckVersion = "1.12.4"
+val scalaTestVersion = "3.0.0-M7"
+val spireVersion = "0.11.0"
+
 name := "Smala"
 
-organization := "com.faacets"
+organization := "net.alasc"
 
-version := "0.1.0-SNAPSHOT"
-
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.8"
 
 resolvers ++= Seq(
   "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
@@ -12,11 +16,19 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.googlecode.kiama" %% "kiama" % "1.8.0",
-  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.2",
-  "org.scalacheck" %% "scalacheck" % "1.11.6" % "test",
-  "org.scalatest" % "scalatest_2.11" % "2.2.1" % "test",
-  "org.spire-math" %% "spire" % "0.9.1-SNAPSHOT"
+  "com.googlecode.kiama" %% "kiama" % kiamaVersion,
+  "org.scala-lang.modules" %% "scala-parser-combinators" % parserCombinatorsVersion,
+  "org.scalacheck" %% "scalacheck" % scalaCheckVersion % "test",
+  "org.scalatest" % "scalatest_2.11" % scalaTestVersion % "test",
+  "org.spire-math" %% "spire" % spireVersion
 )
 
 scalacOptions ++= Seq("-unchecked", "-feature", "-deprecation") 
+
+bintrayRepository := "maven"
+
+publishArtifact in Test := false
+
+homepage := Some(url("http://github.com/denisrosset/smala"))
+
+licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
